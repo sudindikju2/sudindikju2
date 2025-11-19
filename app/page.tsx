@@ -66,9 +66,9 @@ export default function Page() {
             <div className="w-full max-w-sm">
               <p className="text-xs text-slate-600 mb-2">Progress Pengembangan</p>
               <div className="space-y-3">
-                <Progress label="Desain & Struktur Informasi" pct={100} />
-                <Progress label="Frontend Landing Page" pct={70} />
-                <Progress label="Integrasi ASKA (backend)" pct={30} />
+                <Progress label="Desain & Struktur Informasi" pct={80} />
+                <Progress label="Frontend Web Page" pct={35} />
+                <Progress label="Integrasi ASKA (backend)" pct={10} />
               </div>
             </div>
             
