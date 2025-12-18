@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "SUDINDIK JU 2",
   description: "Suku Dinas Pendidikan Jakarta Utara 2 - Portal Layanan dan Informasi",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({

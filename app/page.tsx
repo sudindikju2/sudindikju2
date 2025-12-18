@@ -1,13 +1,19 @@
 // File: src/app/page.tsx
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 
 export default function Page() {
   const [isLoaded, setIsLoaded] = useState(false)
+  const askaButtonRef = useRef<HTMLAnchorElement>(null)
 
   useEffect(() => {
     setIsLoaded(true)
+    // Delay focus slightly to ensure animations start/elements render
+    const timer = setTimeout(() => {
+      askaButtonRef.current?.focus()
+    }, 800)
+    return () => clearTimeout(timer)
   }, [])
 
   return (
@@ -38,9 +44,18 @@ export default function Page() {
             <p className="text-xs text-slate-500">Jakarta Utara — Wilayah 2</p>
           </div>
         </div>
-        <span className="px-3 py-1.5 text-xs font-semibold text-sky-700 bg-sky-100/80 rounded-full border border-sky-200/50">
-          🚧 Coming Soon
-        </span>
+        <a
+          href="https://admin.sudindikju2.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative inline-flex items-center gap-2 group/btn px-5 py-2.5 overflow-hidden rounded-full bg-gradient-to-r from-sky-600 to-blue-600 text-white font-bold text-xs shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50 hover:scale-115 active:scale-95 transition-all duration-300 ring-1 ring-white/20"
+        >
+          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:animate-[shine_1.5s_infinite]" />
+          <span className="relative">Portal Kepegawaian</span>
+          <svg className="relative w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
       </nav>
 
       {/* Main Content - Fits in viewport */}
@@ -136,11 +151,13 @@ export default function Page() {
                             <p className="text-xs text-white/80">Agen AI Sekolah Kita</p>
                           </div>
                           <a
+                            ref={askaButtonRef}
                             href="http://aska.sudindikju2.com/"
-                            className="inline-flex items-center gap-1.5 px-4 py-2 bg-white text-sky-700 text-xs font-bold rounded-lg shadow-lg hover:shadow-xl hover:bg-sky-50 hover:-translate-y-0.5 transition-all duration-200"
+                            className="relative inline-flex items-center gap-2 px-5 py-2.5 overflow-hidden rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold text-xs shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 hover:scale-115 active:scale-95 focus:ring-2 focus:ring-emerald-400 focus:outline-none transition-all duration-300 group/aska ring-1 ring-white/20"
                           >
-                            Tanya ASKA!!
-                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/aska:animate-[shine_1.5s_infinite]" />
+                            <span className="relative">Tanya ASKA!!</span>
+                            <svg className="relative w-3.5 h-3.5 group-hover/aska:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                             </svg>
                           </a>
